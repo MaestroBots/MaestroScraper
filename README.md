@@ -55,7 +55,7 @@ To install:
 ### Linux
 
 ```bash
-sudo dpkg -i maestro-scraper_*_amd64.deb
+sudo dpkg -i maestro-scraper-*-amd64.deb
 ```
 
 ---
