@@ -1,6 +1,6 @@
 # Maestro Scraper User Manual
 
-**Version 1.0.0**
+**Version 1.1.0**
 
 ---
 
@@ -12,7 +12,7 @@
 4. [Getting Your Telegram API Credentials](#getting-your-telegram-api-credentials)
 5. [Logging In](#logging-in)
 6. [Channels Page](#channels-page)
-7. [Monitor Page](#monitor-page)
+7. [Activity Page](#activity-page)
 8. [Settings](#settings)
 9. [Supported Blockchains](#supported-blockchains)
 10. [Security & Privacy](#security--privacy)
@@ -23,25 +23,25 @@
 
 ## Introduction
 
-Maestro Scraper is a cross-platform desktop application that monitors your Telegram channels and groups in real-time, automatically detects cryptocurrency contract addresses, and forwards them to Maestro trading bots.
+Maestro Scraper is a cross-platform desktop application that scrapes your Telegram channels and groups in real-time, automatically detects cryptocurrency contract addresses, and forwards them to Maestro trading bots.
 
 ### What It Does
 
 - Connects to your Telegram account and listens for messages in channels you choose
 - Scans every incoming message for crypto addresses (ETH, SOL, TON, TRON)
 - Automatically forwards detected addresses to the Maestro trading bot
-- Tracks duplicates so you never forward the same address twice
+- Skips duplicates so you never forward the same address twice
 - Logs all activity so you can review what was detected and forwarded
 
 ### Key Features
 
-- **Real-Time Monitoring** - Tracks new messages, edits, and pinned posts as they happen
+- **Real-Time Scraping** - Scrapes new messages, edits, and pinned posts as they happen
 - **Multi-Chain Detection** - Detects EVM, Solana, TON, and TRON addresses
-- **Flexible Filtering** - Choose exactly what to track per channel: admin posts, user messages, bot messages, or pinned messages
+- **Flexible Filtering** - Choose exactly what to scrape per channel: admin posts, user messages, bot messages, or pinned messages
 - **Duplicate Detection** - Automatically skips addresses that have already been seen in the same chat
 - **Bot Forwarding** - Forwards detected addresses to Maestro (`@maestro`) or Maestro Pro (`@maestropro`)
 - **Encrypted Storage** - Your Telegram session is encrypted using your operating system's keychain
-- **Persistent Stats** - Monitoring statistics and activity logs survive app restarts
+- **Persistent Stats** - Scraping statistics and activity logs survive app restarts
 - **Forward to Maestro** - Experimental feature to manually resend any detected address to the bot
 
 ---
@@ -62,8 +62,8 @@ Maestro Scraper is a cross-platform desktop application that monitors your Teleg
 
 Download the latest release for your platform from the [GitHub Releases](https://github.com/MaestroBots/MaestroScraper/releases) page:
 
-| Platform                  | File                             |
-| ------------------------- | -------------------------------- |
+| Platform                  | File                              |
+| ------------------------- | --------------------------------- |
 | **Windows**               | `maestro-scraper-x.x.x-x64.exe`   |
 | **macOS (Intel)**         | `maestro-scraper-x.x.x-x64.dmg`   |
 | **macOS (Apple Silicon)** | `maestro-scraper-x.x.x-arm64.dmg` |
@@ -79,6 +79,7 @@ Since the app is not signed with an Apple Developer certificate, macOS will show
 > Apple could not verify "Maestro Scraper" is free of malware that may harm your Mac or compromise your privacy.
 
 To install:
+
 1. Open the `.dmg` file and drag the app to Applications
 2. When the warning appears, click **Open Anyway** — or go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to the Maestro Scraper message
 3. You only need to do this once — subsequent launches will work normally
@@ -91,6 +92,7 @@ Windows Defender SmartScreen may show a warning:
 > Microsoft Defender SmartScreen prevented an unrecognized app from starting.
 
 To install:
+
 1. Run the `.exe` installer
 2. When the SmartScreen warning appears, click **More info**
 3. Click **Run anyway**
@@ -165,65 +167,65 @@ After successful login, you'll be redirected to the Channels page.
 
 ## Channels Page
 
-The Channels page is where you select which Telegram channels and groups to monitor. After logging in, your Telegram dialogs are automatically loaded.
+The Channels page is where you select which Telegram channels and groups to scrape. After logging in, your Telegram dialogs are automatically loaded. Scraping begins as soon as you enable scraping on a channel — there is no need to navigate to the Activity page first.
 
 ### Viewing Your Channels
 
 The page displays a table of all your Telegram chats with the following columns:
 
-| Column       | Description                                        |
-| ------------ | -------------------------------------------------- |
-| **Name**     | The display name of the channel, group, or user    |
-| **Username** | The `@username` if available                       |
-| **Type**     | One of: `channel`, `group`, `user`, `bot`, `self`  |
-| **ID**       | The unique Telegram ID for this chat               |
-| **Admins**   | Toggle to track messages from channel/group admins |
-| **Users**    | Toggle to track messages from regular users        |
-| **Pinned**   | Toggle to track pinned messages                    |
-| **Bots**     | Toggle to track messages from bots                 |
+| Column       | Description                                         |
+| ------------ | --------------------------------------------------- |
+| **Name**     | The display name of the channel, group, or user     |
+| **Username** | The `@username` if available                        |
+| **Type**     | One of: `channel`, `group`, `user`, `bot`, `self`   |
+| **ID**       | The unique Telegram ID for this chat                |
+| **Admins**   | Toggle to scrape messages from channel/group admins |
+| **Users**    | Toggle to scrape messages from regular users        |
+| **Pinned**   | Toggle to scrape pinned messages                    |
+| **Bots**     | Toggle to scrape messages from bots                 |
 
-### Selecting What to Track
+### Selecting What to Scrape
 
-For each channel or group, you can independently enable or disable tracking for different message sources by checking the corresponding checkboxes:
+For each channel or group, you can independently enable or disable scraping for different message sources by checking the corresponding checkboxes:
 
-- **Admins** - Track messages posted by admins (including posts made by the channel itself). Not available for direct user chats.
-- **Users** - Track messages from regular (non-admin) users
-- **Pinned** - Track pinned messages. Not available for direct user chats.
-- **Bots** - Track messages sent by bots
+- **Admins** - Scrape messages posted by admins (including posts made by the channel itself). Not available for direct user chats.
+- **Users** - Scrape messages from regular (non-admin) users
+- **Pinned** - Scrape pinned messages. Not available for direct user chats.
+- **Bots** - Scrape messages sent by bots
 
-A channel is considered "tracked" when at least one checkbox is enabled.
+A channel is considered "scraped" when at least one checkbox is enabled.
 
 > **Tip**: For most crypto alpha channels, you'll want to enable **Admins** only, since the important calls typically come from channel admins.
 
 ### Toolbar Actions
 
 - **Search** - Filter channels by name, username, or ID
-- **Tracked Only** - Toggle to show only channels that have at least one tracking option enabled
-- **Untrack All** - Disable all tracking on all channels at once
+- **Scraped Only** - Toggle to show only channels that have at least one scraping option enabled
+- **Clear All** - Disable all scraping on all channels at once
 - **Refresh** - Re-fetch your channel list from Telegram (useful if you joined new channels)
 
 ### Sorting & Pagination
 
 - Click any column header (**Name**, **Username**, **Type**, **ID**) to sort by that column
 - Click the same header again to reverse the sort order
-- Tracked channels always appear at the top of the list
+- Scraped channels always appear at the top of the list
 - Use the pagination controls at the bottom to navigate through your channels
 - Change the number of rows displayed per page (10, 20, 50, or 100)
 
 ---
 
-## Monitor Page
+## Activity Page
 
-The Monitor page is the heart of the application. This is where real-time message monitoring and address detection happens.
+The Activity page shows a real-time log of scraping activity and address detection. Scraping runs independently in the background regardless of which page you're on — this page simply gives you visibility into what's happening.
 
 ### Starting & Stopping
 
-- When you navigate to the Monitor page with tracked channels, monitoring **starts automatically**
-- Use the **Start Monitoring** / **Stop Monitoring** button to control monitoring manually
-- Stopping monitoring requires confirmation to prevent accidental stops
+- Scraping is **on by default** — it starts automatically when you're logged in and have scraped channels, regardless of which page you're on
+- Use the **Start Scraping** / **Stop Scraping** button to control scraping manually
+- Stopping scraping requires confirmation to prevent accidental stops
 - The status indicator in the top-right shows the current state:
-  - **Green (pulsing)** - Monitoring is active
-  - **Gray** - Idle (monitoring is stopped)
+  - **Green (pulsing)** - Scraping is active
+  - **Gray** - Idle (scraping is stopped)
 
 ### Live Statistics
 
@@ -231,7 +233,7 @@ Four stat cards are displayed at the top of the page:
 
 | Stat                   | Description                                                                                                       |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Messages Scanned**   | Total number of messages that passed your tracking filters and were scanned for addresses                         |
+| **Messages Scanned**   | Total number of messages that passed your scraping filters and were scanned for addresses                         |
 | **Addresses Found**    | Number of unique crypto addresses detected                                                                        |
 | **Duplicates Skipped** | Number of addresses skipped because they were already seen in the same chat (when duplicate filtering is enabled) |
 | **Forwarded to Bot**   | Number of times addresses were successfully forwarded to the Maestro bot                                          |
@@ -240,15 +242,15 @@ Stats persist across app restarts.
 
 ### Activity Log
 
-Below the statistics, the activity log shows a real-time feed of all monitoring events. Each entry is color-coded:
+Below the statistics, the activity log shows a real-time feed of all scraping events. Each entry is color-coded:
 
-| Color      | Type          | Meaning                                                     |
-| ---------- | ------------- | ----------------------------------------------------------- |
-| **Green**  | Address Found | A new crypto address was detected                           |
-| **Yellow** | Duplicate     | An address was skipped because it was already seen          |
-| **Blue**   | Forwarded     | An address was successfully sent to the Maestro bot         |
-| **Red**    | Error         | Something went wrong (e.g., failed to forward)              |
-| **Gray**   | Message       | An informational message (e.g., monitoring started/stopped) |
+| Color      | Type          | Meaning                                                   |
+| ---------- | ------------- | --------------------------------------------------------- |
+| **Green**  | Address Found | A new crypto address was detected                         |
+| **Yellow** | Duplicate     | An address was skipped because it was already seen        |
+| **Blue**   | Forwarded     | An address was successfully sent to the Maestro bot       |
+| **Red**    | Error         | Something went wrong (e.g., failed to forward)            |
+| **Gray**   | Message       | An informational message (e.g., scraping started/stopped) |
 
 Each log entry shows:
 
@@ -266,11 +268,11 @@ Each log entry shows:
 - **Clear Log** - Remove all log entries and reset statistics
 - **Infinite Scroll** - Scroll down to load more entries (50 loaded at a time)
 
-### How Message Processing Works
+### How Scraping Works
 
-When a new message arrives in a tracked channel:
+When a new message arrives in a scraped channel:
 
-1. The app checks if the chat is in your tracked list
+1. The app checks if the chat is in your scraped list
 2. It checks if the message type matches your filters (admin, user, bot, or pinned)
 3. The message text and any embedded links are scanned for crypto addresses
 4. If duplicate detection is enabled, previously seen addresses are skipped
@@ -316,6 +318,7 @@ Controls how long activity logs are kept before being automatically cleaned up:
 - **7 days** / **14 days** / **21 days** / **30 days**
 - Expired entries are removed automatically when the app starts
 - Maximum of 10,000 log entries are stored regardless of retention period
+- When the limit is reached, the oldest entries are automatically dropped to make room for new ones
 
 #### Clear Activity Logs
 
@@ -333,7 +336,7 @@ Permanently delete the duplicate detection history. After clearing:
 
 The address history is capped at **10,000 entries**. When this limit is reached, the oldest 20% of entries are automatically removed to make room for new ones. You can see the current usage on the Settings page (e.g., "3,500 / 10,000 addresses"). A warning appears when usage exceeds 50%.
 
-> **Performance Tip**: If you notice the app becoming slower, check if your activity log or address history has grown very large. The app will show a warning when these exceed recommended limits. Use the clear buttons to free up space.
+> **Note**: Both activity logs and address history automatically remove the oldest data when their limits are reached, so you don't need to manage them manually. However, if the app feels slow, you can clear them from this page to free up space.
 
 ---
 
@@ -341,12 +344,12 @@ The address history is capped at **10,000 entries**. When this limit is reached,
 
 Maestro Scraper detects addresses for the following blockchains:
 
-| Blockchain         | Address Format                                     | Example           |
-| ------------------ | -------------------------------------------------- | ----------------- |
-| **EVM**            | Starts with `0x` followed by 40 hex characters     | `0x1234abcd...`   |
-| **Solana (SOL)**   | Base58 encoded, 32-44 characters                   | `7xKXtg2CW87...`  |
-| **TON**            | Starts with `EQ` or `UQ` followed by 46 characters | `EQAbCdEf123...`  |
-| **TRON**           | Starts with `T` followed by 33 characters          | `TAbCdEf12345...` |
+| Blockchain       | Address Format                                     | Example           |
+| ---------------- | -------------------------------------------------- | ----------------- |
+| **EVM**          | Starts with `0x` followed by 40 hex characters     | `0x1234abcd...`   |
+| **Solana (SOL)** | Base58 encoded, 32-44 characters                   | `7xKXtg2CW87...`  |
+| **TON**          | Starts with `EQ` or `UQ` followed by 46 characters | `EQAbCdEf123...`  |
+| **TRON**         | Starts with `T` followed by 33 characters          | `TAbCdEf12345...` |
 
 The app scans both the message text and any embedded URLs/links for these address patterns.
 
@@ -368,9 +371,9 @@ This means your Telegram session is protected by your OS login credentials. Othe
 
 - **Telegram session** - An encrypted session token that keeps you logged in
 - **API credentials** - Only if "Remember credentials" is checked
-- **Channel tracking preferences** - Which channels you're monitoring and filter settings
+- **Channel scraping preferences** - Which channels you're scraping and filter settings
 - **Address history** - Previously detected addresses (for duplicate detection)
-- **Activity logs** - A log of monitoring events
+- **Activity logs** - A log of scraping events
 - **App settings** - Your preferences (duplicate filtering, bot selection, etc.)
 
 ### What Data Is NOT Stored
@@ -385,7 +388,6 @@ When forwarding addresses to Maestro, the app sends a formatted message containi
 
 - The detected address(es)
 - A link to the source message (if available)
-- Encrypted metadata for tracking purposes
 
 ---
 
@@ -405,10 +407,10 @@ When forwarding addresses to Maestro, the app sends a formatted message containi
 
 ### Addresses not being detected
 
-- Verify that the channel is tracked (at least one checkbox enabled on the Channels page)
+- Verify that the channel is being scraped (at least one checkbox enabled on the Channels page)
 - Check that the correct filter is enabled (e.g., if the address comes from an admin, make sure "Admins" is checked)
 - The address format must match one of the supported patterns (see [Supported Blockchains](#supported-blockchains))
-- Check the Monitor page activity log for any error messages
+- Check the Activity page log for any error messages
 
 ### Addresses not being forwarded
 
@@ -419,8 +421,8 @@ When forwarding addresses to Maestro, the app sends a formatted message containi
 ### Duplicate addresses being skipped
 
 - This is expected behavior when "Ignore Duplicates" is enabled in Settings
-- Duplicates are tracked per channel - the same address from a different channel will still be forwarded
-- To reset duplicate tracking, go to Settings and click **Clear Address History**
+- Duplicates are detected per channel - the same address from a different channel will still be forwarded
+- To reset duplicate detection, go to Settings and click **Clear Address History**
 
 ### App feels slow
 
@@ -455,17 +457,17 @@ Without Keychain access, your credentials and session cannot be saved — you wi
 
 ## FAQ
 
-**Q: Do I need to keep the app open for monitoring to work?**
-A: Yes. Maestro Scraper monitors messages in real-time and must remain running. If you close the app, monitoring stops. When you reopen it, your stats and logs are preserved, and monitoring can be restarted.
+**Q: Do I need to keep the app open for scraping to work?**
+A: Yes. Maestro Scraper scrapes messages in real-time and must remain running. If you close the app, scraping stops. When you reopen it, your stats and logs are preserved, and scraping resumes automatically once you have scraped channels.
 
-**Q: Can I monitor multiple channels at once?**
-A: Yes. You can track as many channels and groups as you want simultaneously. Enable tracking on each channel from the Channels page.
+**Q: Can I scrape multiple channels at once?**
+A: Yes. You can scrape as many channels and groups as you want simultaneously. Enable scraping on each channel from the Channels page.
 
 **Q: Will this get my Telegram account banned?**
-A: Maestro Scraper uses the official Telegram API through gramjs. As long as you use it normally, your account should be safe. Avoid running excessive operations in short periods.
+A: Maestro Scraper uses the official Telegram API. As long as you use it normally, your account should be safe. Avoid running excessive operations in short periods.
 
 **Q: What happens if I join a new channel?**
-A: Click **Refresh** on the Channels page to update your channel list. The new channel will appear, and you can enable tracking on it.
+A: Click **Refresh** on the Channels page to update your channel list. The new channel will appear, and you can enable scraping on it.
 
 **Q: Can I use this with multiple Telegram accounts?**
 A: Currently, you can only be logged in with one account at a time. To switch accounts, log out and log in with different credentials.
@@ -477,11 +479,11 @@ A: Maestro (`@maestro`) is the standard trading bot. Maestro Pro (`@maestropro`)
 A: When an address is detected, the app stores a record of `address + chatId`. If the same address appears again in the same chat, it's skipped. Addresses from different chats are treated as separate. You can clear the history in Settings to reset this.
 
 **Q: Are my messages or private chats read?**
-A: The app only processes messages from channels and groups you explicitly choose to track. It does not read your private messages or any chats you haven't selected.
+A: The app only processes messages from chats you explicitly choose to scrape on the Channels page. It does not read any chats you haven't selected. Note that you can scrape private chats (user and bot conversations) if you enable the "Users" toggle on them.
 
 **Q: Where is my data stored?**
 A: All data is stored locally on your computer. Your Telegram session is encrypted via the OS keychain. No data is sent to external servers besides Telegram's own API and the Maestro bot.
 
 ---
 
-_Maestro Scraper v1.0.0 - Built with Electron, React, and gramjs_
+_Maestro Scraper v1.1.0_

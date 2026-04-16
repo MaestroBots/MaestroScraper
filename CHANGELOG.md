@@ -1,8 +1,16 @@
 # Changelog
 
-## Maestro Scraper v1.0.0
+## v1.1.0
 
-Maestro Scraper v1.0.0 is a major release and a complete evolution from the original TelegramScraper. The app has been rebuilt from the ground up with a new name, new architecture, and a significantly improved user experience.
+- Channels table now defaults to Telegram order (pinned first, then by most recent activity).
+- Cleaned up the interface — renamed the "Monitor" page to "Activity" and made labels consistent throughout the app.
+- Scraping status is now visible in the navbar on all pages.
+- New app icon that fits properly in the macOS dock.
+- Various bug fixes and stability improvements.
+
+## v1.0.0
+
+v1.0.0 is a major release and a complete evolution from the original TelegramScraper. The app has been rebuilt from the ground up with a new name, new architecture, and a significantly improved user experience.
 
 - **TelegramScraper** has been renamed to **Maestro Scraper** to better reflect its integration with the Maestro trading ecosystem.
 - Brand-new multi-page layout with dedicated pages for Channels, Monitor, and Settings.

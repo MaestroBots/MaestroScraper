@@ -1,6 +1,6 @@
 # Maestro Scraper
 
-A cross-platform desktop application that monitors your Telegram channels in real-time, detects cryptocurrency contract addresses, and forwards them to your Maestro trading bot.
+A cross-platform desktop application that scrapes your Telegram channels in real-time, detects cryptocurrency contract addresses, and forwards them to your Maestro trading bot.
 
 **Supports EVM, Solana, TON, and TRON addresses.**
 
@@ -65,8 +65,8 @@ sudo dpkg -i maestro-scraper-*-amd64.deb
 1. Get your Telegram API credentials from [my.telegram.org/apps](https://my.telegram.org/apps)
 2. Open Maestro Scraper and enter your API ID and API Hash
 3. Log in with your phone number and verification code
-4. Select channels to monitor on the Channels page
-5. Go to the Monitor page — monitoring starts automatically
+4. Select channels to scrape on the Channels page — scraping starts automatically
+5. Check the Activity page to see detected addresses and logs
 
 For detailed instructions, see the **[User Manual](USER_MANUAL.md)**.
 
@@ -74,5 +74,5 @@ For detailed instructions, see the **[User Manual](USER_MANUAL.md)**.
 
 ## Documentation
 
-- **[User Manual](USER_MANUAL.md)** — Full guide covering login, channel setup, monitoring, settings, and troubleshooting
+- **[User Manual](USER_MANUAL.md)** — Full guide covering login, channel setup, scraping, settings, and troubleshooting
 - **[Changelog](CHANGELOG.md)** — Release notes and version history
