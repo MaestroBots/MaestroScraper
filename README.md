@@ -8,16 +8,16 @@ A cross-platform desktop application that scrapes your Telegram channels in real
 
 ## Download
 
-Download the latest release for your platform:
+Download the latest release ([v1.1.1](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.1.1)) for your platform:
 
-| Platform                  | File                              | Notes             |
-| ------------------------- | --------------------------------- | ----------------- |
-| **Windows**               | `maestro-scraper-x.x.x-x64.exe`   | Run the installer |
-| **macOS (Apple Silicon)** | `maestro-scraper-x.x.x-arm64.dmg` | M1/M2/M3/M4 Macs  |
-| **macOS (Intel)**         | `maestro-scraper-x.x.x-x64.dmg`   | Older Intel Macs  |
-| **Linux**                 | `maestro-scraper-x.x.x-amd64.deb` | Debian/Ubuntu     |
+| Platform                  | File                                                                                                                                        | Notes             |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| **Windows**               | [`maestro-scraper-1.1.1-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.exe)     | Run the installer |
+| **macOS (Apple Silicon)** | [`maestro-scraper-1.1.1-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-arm64.dmg) | M1/M2/M3/M4 Macs  |
+| **macOS (Intel)**         | [`maestro-scraper-1.1.1-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.dmg)     | Older Intel Macs  |
+| **Linux**                 | [`maestro-scraper-1.1.1-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-amd64.deb) | Debian/Ubuntu     |
 
-**[Go to Releases](https://github.com/MaestroBots/MaestroScraper/releases)**
+**[Browse all releases](https://github.com/MaestroBots/MaestroScraper/releases)**
 
 > Not sure which macOS version? Click the Apple menu > **About This Mac**. If it says "Apple M1" (or M2, M3, M4), download the **arm64** version. Otherwise, download **x64**.
 

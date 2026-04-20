@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1
+
+- Fixed a bug where messages posted in tracked channels by the logged-in account (as an admin or anonymous channel author) were not being scraped. Posts in channels you track are now forwarded to your Maestro bot regardless of who authored them.
+
 ## v1.1.0
 
 - Channels table now defaults to Telegram order (pinned first, then by most recent activity).

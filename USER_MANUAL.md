@@ -1,6 +1,6 @@
 # Maestro Scraper User Manual
 
-**Version 1.1.0**
+**Version 1.1.1**
 
 ---
 
@@ -39,7 +39,7 @@ Maestro Scraper is a cross-platform desktop application that scrapes your Telegr
 - **Multi-Chain Detection** - Detects EVM, Solana, TON, and TRON addresses
 - **Flexible Filtering** - Choose exactly what to scrape per channel: admin posts, user messages, bot messages, or pinned messages
 - **Duplicate Detection** - Automatically skips addresses that have already been seen in the same chat
-- **Bot Forwarding** - Forwards detected addresses to Maestro (`@maestro`) or Maestro Pro (`@maestropro`)
+- **Bot Forwarding** - Forwards detected addresses to Maestro ([`@maestro`](https://t.me/maestro)) or Maestro Pro ([`@maestropro`](https://t.me/maestropro))
 - **Encrypted Storage** - Your Telegram session is encrypted using your operating system's keychain
 - **Persistent Stats** - Scraping statistics and activity logs survive app restarts
 - **Forward to Maestro** - Experimental feature to manually resend any detected address to the bot
@@ -47,6 +47,8 @@ Maestro Scraper is a cross-platform desktop application that scrapes your Telegr
 ---
 
 ## System Requirements
+
+Maestro Scraper runs on modern desktop operating systems and requires a Telegram account with API credentials.
 
 |                              | Requirement                                                              |
 | ---------------------------- | ------------------------------------------------------------------------ |
@@ -58,16 +60,19 @@ Maestro Scraper is a cross-platform desktop application that scrapes your Telegr
 
 ## Installation
 
+Follow these steps to download and install Maestro Scraper on your platform.
+
 ### Download
 
-Download the latest release for your platform from the [GitHub Releases](https://github.com/MaestroBots/MaestroScraper/releases) page:
+Download the latest release ([v1.1.1](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.1.1)) for your platform:
 
-| Platform                  | File                              |
-| ------------------------- | --------------------------------- |
-| **Windows**               | `maestro-scraper-x.x.x-x64.exe`   |
-| **macOS (Intel)**         | `maestro-scraper-x.x.x-x64.dmg`   |
-| **macOS (Apple Silicon)** | `maestro-scraper-x.x.x-arm64.dmg` |
-| **Linux**                 | `maestro-scraper-x.x.x-amd64.deb` |
+| Platform                  | File                                                                                                                                |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Windows**               | [`maestro-scraper-1.1.1-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.exe)     |
+| **macOS (Intel)**         | [`maestro-scraper-1.1.1-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.dmg)     |
+| **macOS (Apple Silicon)** | [`maestro-scraper-1.1.1-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-arm64.dmg) |
+| **Linux (x64)**           | [`maestro-scraper-1.1.1-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-amd64.deb) |
+| **Linux (arm64)**         | [`maestro-scraper-1.1.1-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-arm64.deb) |
 
 ### Install
 
@@ -101,7 +106,7 @@ To install:
 #### Linux
 
 ```bash
-sudo dpkg -i maestro-scraper-*-amd64.deb
+sudo dpkg -i maestro-scraper-*.deb
 ```
 
 ---
@@ -300,8 +305,8 @@ When enabled, the app skips addresses that have already been detected in the sam
 
 Toggle between the standard Maestro bot and Maestro Pro:
 
-- **Maestro** (`@maestro`) - The standard trading bot (default)
-- **Maestro Pro** (`@maestropro`) - The premium trading bot
+- **Maestro** ([`@maestro`](https://t.me/maestro)) - The standard trading bot (default)
+- **Maestro Pro** ([`@maestropro`](https://t.me/maestropro)) - The premium trading bot
 
 The currently active bot is shown with a green "Active" badge.
 
@@ -357,6 +362,8 @@ The app scans both the message text and any embedded URLs/links for these addres
 
 ## Security & Privacy
 
+Maestro Scraper runs entirely locally. Your Telegram session is encrypted with your OS keychain; other app data is stored in plaintext on your computer.
+
 ### Encrypted Storage
 
 Your Telegram session is encrypted using your operating system's native keychain:
@@ -393,6 +400,8 @@ When forwarding addresses to Maestro, the app sends a formatted message containi
 
 ## Troubleshooting
 
+If you're running into issues, start here. Check the Activity page log for error messages first.
+
 ### "Not connected to Telegram" error
 
 - Make sure you have an active internet connection
@@ -414,7 +423,7 @@ When forwarding addresses to Maestro, the app sends a formatted message containi
 
 ### Addresses not being forwarded
 
-- Make sure the Maestro bot (`@maestro` or `@maestropro`) is accessible from your Telegram account
+- Make sure the Maestro bot ([`@maestro`](https://t.me/maestro) or [`@maestropro`](https://t.me/maestropro)) is accessible from your Telegram account
 - Start a conversation with the Maestro bot on Telegram first if you haven't already
 - Check the activity log for "error" entries that may explain the failure
 
@@ -457,33 +466,33 @@ Without Keychain access, your credentials and session cannot be saved — you wi
 
 ## FAQ
 
-**Q: Do I need to keep the app open for scraping to work?**
+**Q: Do I need to keep the app open for scraping to work?**<br />
 A: Yes. Maestro Scraper scrapes messages in real-time and must remain running. If you close the app, scraping stops. When you reopen it, your stats and logs are preserved, and scraping resumes automatically once you have scraped channels.
 
-**Q: Can I scrape multiple channels at once?**
+**Q: Can I scrape multiple channels at once?**<br />
 A: Yes. You can scrape as many channels and groups as you want simultaneously. Enable scraping on each channel from the Channels page.
 
-**Q: Will this get my Telegram account banned?**
+**Q: Will this get my Telegram account banned?**<br />
 A: Maestro Scraper uses the official Telegram API. As long as you use it normally, your account should be safe. Avoid running excessive operations in short periods.
 
-**Q: What happens if I join a new channel?**
+**Q: What happens if I join a new channel?**<br />
 A: Click **Refresh** on the Channels page to update your channel list. The new channel will appear, and you can enable scraping on it.
 
-**Q: Can I use this with multiple Telegram accounts?**
+**Q: Can I use this with multiple Telegram accounts?**<br />
 A: Currently, you can only be logged in with one account at a time. To switch accounts, log out and log in with different credentials.
 
-**Q: What's the difference between Maestro and Maestro Pro?**
-A: Maestro (`@maestro`) is the standard trading bot. Maestro Pro (`@maestropro`) offers premium features. You can switch between them in Settings. The forwarding works the same way for both.
+**Q: What's the difference between Maestro and Maestro Pro?**<br />
+A: Maestro ([`@maestro`](https://t.me/maestro)) is the standard trading bot. Maestro Pro ([`@maestropro`](https://t.me/maestropro)) offers premium features. You can switch between them in Settings. The forwarding works the same way for both.
 
-**Q: How does duplicate detection work?**
+**Q: How does duplicate detection work?**<br />
 A: When an address is detected, the app stores a record of `address + chatId`. If the same address appears again in the same chat, it's skipped. Addresses from different chats are treated as separate. You can clear the history in Settings to reset this.
 
-**Q: Are my messages or private chats read?**
+**Q: Are my messages or private chats read?**<br />
 A: The app only processes messages from chats you explicitly choose to scrape on the Channels page. It does not read any chats you haven't selected. Note that you can scrape private chats (user and bot conversations) if you enable the "Users" toggle on them.
 
-**Q: Where is my data stored?**
+**Q: Where is my data stored?**<br />
 A: All data is stored locally on your computer. Your Telegram session is encrypted via the OS keychain. No data is sent to external servers besides Telegram's own API and the Maestro bot.
 
 ---
 
-_Maestro Scraper v1.1.0_
+_Maestro Scraper v1.1.1_
