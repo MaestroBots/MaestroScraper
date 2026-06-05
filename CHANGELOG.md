@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.0
+
+- The Channels page now lists up to your **5,000 most recently active chats** (up from 500), so users in many channels can finally see and scrape the long tail of their chat list.
+- Channels now load progressively as they're fetched — the table fills in batches instead of waiting for everything to finish, making the page feel much faster on large accounts.
+- If you're in more chats than the limit, a warning banner appears at the top of the Channels page letting you know older chats were omitted, with instructions on how to surface them.
+- Fixed a bug where posts from anonymous admins (signed as the channel itself) were not always recognized as admin posts. With the **Admins** filter enabled, these posts are now scraped correctly in broadcast channels and supergroups.
+- Improved address detection from links: addresses inside dexscreener and pump.fun URLs are now picked up correctly, instead of being missed or captured as a wrong, partial address.
+
 ## v1.1.1
 
 - Fixed a bug where messages posted in tracked channels by the logged-in account (as an admin or anonymous channel author) were not being scraped. Posts in channels you track are now forwarded to your Maestro bot regardless of who authored them.

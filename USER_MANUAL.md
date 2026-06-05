@@ -189,6 +189,8 @@ The page displays a table of all your Telegram chats with the following columns:
 | **Pinned**   | Toggle to scrape pinned messages                    |
 | **Bots**     | Toggle to scrape messages from bots                 |
 
+> **Chat list limit**: The Channels page lists up to your **5,000 most recently active chats**. If you're in more chats than that, an amber banner appears at the top of the page noting that older chats were not listed. To bring an older chat into range, open it in Telegram (sending or reading a message refreshes its activity timestamp) and then click **Refresh**.
+
 ### Selecting What to Scrape
 
 For each channel or group, you can independently enable or disable scraping for different message sources by checking the corresponding checkboxes:
@@ -413,6 +415,11 @@ If you're running into issues, start here. Check the Activity page log for error
 - Click the **Refresh** button on the Channels page
 - Make sure you're connected to Telegram (check the connection status)
 - If you just joined new channels, it may take a moment for them to appear
+
+### An older channel is missing from the list
+
+- The Channels page lists up to your 5,000 most recently active chats. If you're in more chats than that, older ones are omitted and an amber banner appears at the top of the page.
+- To surface a missing older chat, open it in Telegram (sending or reading a message refreshes its activity timestamp), then click **Refresh** on the Channels page.
 
 ### Addresses not being detected
 
