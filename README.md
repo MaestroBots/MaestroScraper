@@ -8,14 +8,14 @@ A cross-platform desktop application that scrapes your Telegram channels in real
 
 ## Download
 
-Download the latest release ([v1.1.1](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.1.1)) for your platform:
+Download the latest release ([v1.3.0](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.3.0)) for your platform:
 
 | Platform                  | File                                                                                                                                        | Notes             |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| **Windows**               | [`maestro-scraper-1.1.1-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.exe)     | Run the installer |
-| **macOS (Apple Silicon)** | [`maestro-scraper-1.1.1-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-arm64.dmg) | M1/M2/M3/M4 Macs  |
-| **macOS (Intel)**         | [`maestro-scraper-1.1.1-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.dmg)     | Older Intel Macs  |
-| **Linux**                 | [`maestro-scraper-1.1.1-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-amd64.deb) | Debian/Ubuntu     |
+| **Windows**               | [`maestro-scraper-1.3.0-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-x64.exe)     | Run the installer |
+| **macOS (Apple Silicon)** | [`maestro-scraper-1.3.0-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-arm64.dmg) | M1/M2/M3/M4 Macs  |
+| **macOS (Intel)**         | [`maestro-scraper-1.3.0-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-x64.dmg)     | Older Intel Macs  |
+| **Linux**                 | [`maestro-scraper-1.3.0-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-amd64.deb) | Debian/Ubuntu     |
 
 **[Browse all releases](https://github.com/MaestroBots/MaestroScraper/releases)**
 

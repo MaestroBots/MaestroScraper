@@ -1,6 +1,6 @@
 # Maestro Scraper User Manual
 
-**Version 1.1.1**
+**Version 1.3.0**
 
 ---
 
@@ -64,15 +64,15 @@ Follow these steps to download and install Maestro Scraper on your platform.
 
 ### Download
 
-Download the latest release ([v1.1.1](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.1.1)) for your platform:
+Download the latest release ([v1.3.0](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.3.0)) for your platform:
 
 | Platform                  | File                                                                                                                                |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Windows**               | [`maestro-scraper-1.1.1-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.exe)     |
-| **macOS (Intel)**         | [`maestro-scraper-1.1.1-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-x64.dmg)     |
-| **macOS (Apple Silicon)** | [`maestro-scraper-1.1.1-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-arm64.dmg) |
-| **Linux (x64)**           | [`maestro-scraper-1.1.1-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-amd64.deb) |
-| **Linux (arm64)**         | [`maestro-scraper-1.1.1-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.1.1/maestro-scraper-1.1.1-arm64.deb) |
+| **Windows**               | [`maestro-scraper-1.3.0-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-x64.exe)     |
+| **macOS (Intel)**         | [`maestro-scraper-1.3.0-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-x64.dmg)     |
+| **macOS (Apple Silicon)** | [`maestro-scraper-1.3.0-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-arm64.dmg) |
+| **Linux (x64)**           | [`maestro-scraper-1.3.0-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-amd64.deb) |
+| **Linux (arm64)**         | [`maestro-scraper-1.3.0-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-arm64.deb) |
 
 ### Install
 
@@ -513,4 +513,4 @@ A: All data is stored locally on your computer. Your Telegram session is encrypt
 
 ---
 
-_Maestro Scraper v1.1.1_
+_Maestro Scraper v1.3.0_
