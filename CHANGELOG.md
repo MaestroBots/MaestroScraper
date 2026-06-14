@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.3.0
+
+- New **Tracking** menu on each channel: pick exactly whose messages to scrape — **Admins** or **Users**, and **Humans** or **Bots** — plus **Pinned** posts and your **own** messages, each toggled independently. This replaces the old single bots switch.
+- Fixed a slowdown where the app could lag or freeze during heavy scraping as the activity log and address history grew. Saving now happens in the background, so monitoring stays smooth.
+- Clearer login errors: the app now shows the specific reason (and its own prompts, like "Please enter the verification code") instead of a generic "something went wrong."
+- Your saved session and credentials are better protected if the stored file is corrupted or a save is interrupted, and logging out now reliably clears your session.
+- Address detection now recognizes Uniswap v4 pool links (the newer 64-character `0x` pool IDs) from any site, which were previously missed or read incorrectly.
+- The **Self** tracking toggle now captures your own messages in a group on its own, without needing the other toggles enabled.
+- More reliable scraping: monitoring no longer silently stops after a background error, and changing your tracking settings while monitoring won't drop incoming messages.
+- New **Telegram Server Region** option on the login screen (set to **Auto** by default) for when the default connection is slow or blocked where you are. It only appears when you need to sign in. Once connected, hover the **Connected** indicator in the footer to see your datacenter and current ping, and click to copy it.
+- The app now detects if the connection quietly drops while you are scraping and shows it in the footer, recovering on its own once messages start flowing again.
+- Connecting no longer hangs forever: if it stalls, you get a clear error and can try again.
+
 ## v1.2.0
 
 - The Channels page now lists up to your **5,000 most recently active chats** (up from 500), so users in many channels can finally see and scrape the long tail of their chat list.

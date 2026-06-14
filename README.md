@@ -35,8 +35,8 @@ Since the app is not signed with an Apple Developer certificate, macOS will show
 To install:
 
 1. Open the `.dmg` file and drag the app to Applications
-2. When the warning appears, click **Open Anyway** — or go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to the Maestro Scraper message
-3. You only need to do this once — subsequent launches will work normally
+2. When the warning appears, click **Open Anyway**, or go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to the Maestro Scraper message
+3. You only need to do this once. Subsequent launches will work normally
 
 ### Windows
 
@@ -65,7 +65,7 @@ sudo dpkg -i maestro-scraper-*-amd64.deb
 1. Get your Telegram API credentials from [my.telegram.org/apps](https://my.telegram.org/apps)
 2. Open Maestro Scraper and enter your API ID and API Hash
 3. Log in with your phone number and verification code
-4. Select channels to scrape on the Channels page — scraping starts automatically
+4. Select channels to scrape on the Channels page, scraping starts automatically
 5. Check the Activity page to see detected addresses and logs
 
 For detailed instructions, see the **[User Manual](USER_MANUAL.md)**.
@@ -74,5 +74,5 @@ For detailed instructions, see the **[User Manual](USER_MANUAL.md)**.
 
 ## Documentation
 
-- **[User Manual](USER_MANUAL.md)** — Full guide covering login, channel setup, scraping, settings, and troubleshooting
-- **[Changelog](CHANGELOG.md)** — Release notes and version history
+- **[User Manual](USER_MANUAL.md)**: Full guide covering login, channel setup, scraping, settings, and troubleshooting
+- **[Changelog](CHANGELOG.md)**: Release notes and version history

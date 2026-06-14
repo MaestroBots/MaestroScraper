@@ -86,8 +86,8 @@ Since the app is not signed with an Apple Developer certificate, macOS will show
 To install:
 
 1. Open the `.dmg` file and drag the app to Applications
-2. When the warning appears, click **Open Anyway** — or go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to the Maestro Scraper message
-3. You only need to do this once — subsequent launches will work normally
+2. When the warning appears, click **Open Anyway**, or go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to the Maestro Scraper message
+3. You only need to do this once. Subsequent launches will work normally
 
 #### Windows
 
@@ -138,8 +138,13 @@ When you first open Maestro Scraper, you'll be taken to the login screen. The lo
 
 - Enter your **API ID** (the number from my.telegram.org)
 - Enter your **API Hash** (the 32-character string)
+- Leave **Telegram Server Region** on **Auto** unless connecting is slow or blocked on your network
 - Check **"Remember credentials"** if you want the app to save your API credentials for next time
 - Click **Continue**
+
+> **Telegram Server Region**
+>
+> **Telegram Server Region** sets which Telegram datacenter the app connects through: **Auto**, **MIA1**, **AMS1**, **MIA2**, **AMS2**, or **SIN**. **Auto** works for almost everyone. If connecting is slow or blocked where you are, try another option. This does not move your account, Telegram always routes you to your account's home region. It appears when there is no saved session yet: your first sign-in, or after you clear your saved login. Signing in saves the session, so afterward the app reconnects to your account's home datacenter automatically and the option is hidden. Once connected, hovering the **Connected** status in the footer shows your datacenter and the current ping (for example **AMS2: 123 ms**), and clicking it copies that.
 
 > If you uncheck "Remember credentials" later, the app will clear all saved credentials and your Telegram session. You will need to log in again.
 
@@ -172,7 +177,7 @@ After successful login, you'll be redirected to the Channels page.
 
 ## Channels Page
 
-The Channels page is where you select which Telegram channels and groups to scrape. After logging in, your Telegram dialogs are automatically loaded. Scraping begins as soon as you enable scraping on a channel — there is no need to navigate to the Activity page first.
+The Channels page is where you select which Telegram channels and groups to scrape. After logging in, your Telegram dialogs are automatically loaded. Scraping begins as soon as you enable scraping on a channel. There is no need to navigate to the Activity page first.
 
 ### Viewing Your Channels
 
@@ -184,25 +189,31 @@ The page displays a table of all your Telegram chats with the following columns:
 | **Username** | The `@username` if available                        |
 | **Type**     | One of: `channel`, `group`, `user`, `bot`, `self`   |
 | **ID**       | The unique Telegram ID for this chat                |
-| **Admins**   | Toggle to scrape messages from channel/group admins |
-| **Users**    | Toggle to scrape messages from regular users        |
-| **Pinned**   | Toggle to scrape pinned messages                    |
-| **Bots**     | Toggle to scrape messages from bots                 |
+| **Tracking** | Dropdown that controls what is being scraped from this chat. The toggles inside depend on the chat type (see below). |
 
 > **Chat list limit**: The Channels page lists up to your **5,000 most recently active chats**. If you're in more chats than that, an amber banner appears at the top of the page noting that older chats were not listed. To bring an older chat into range, open it in Telegram (sending or reading a message refreshes its activity timestamp) and then click **Refresh**.
 
 ### Selecting What to Scrape
 
-For each channel or group, you can independently enable or disable scraping for different message sources by checking the corresponding checkboxes:
+Click the **Tracking** dropdown on any row to open its menu. The toggles inside the dropdown depend on the chat type:
 
-- **Admins** - Scrape messages posted by admins (including posts made by the channel itself). Not available for direct user chats.
-- **Users** - Scrape messages from regular (non-admin) users
-- **Pinned** - Scrape pinned messages. Not available for direct user chats.
-- **Bots** - Scrape messages sent by bots
+- **Group**: full control. Tracking is split across four sender categories under **Admins → Humans / Bots** and **Users → Humans / Bots**, plus standalone **Pinned** and **Self** toggles.
+- **Channel**: broadcast channels only accept posts from admins, so we expose only **Admins** (forward all addresses found in the channel) and **Pinned** (newly pinned messages).
+- **User chat** or **Bot chat**: only **Track** (forward all addresses found in this DM).
+- **Saved Messages**: only **Track** (forward addresses found in your own messages).
 
-A channel is considered "scraped" when at least one checkbox is enabled.
+What each group toggle means:
 
-> **Tip**: For most crypto alpha channels, you'll want to enable **Admins** only, since the important calls typically come from channel admins.
+- **Admins → Humans** - Posts from human admins.
+- **Admins → Bots** - Posts from bot admins. Toggle independently from human admins, e.g., enable **Admins → Humans** only to skip admin bots.
+- **Users → Humans** - Messages from regular (non-admin) human members.
+- **Users → Bots** - Messages from regular (non-admin) bot members.
+- **Pinned** - Newly pinned messages.
+- **Self** - Your own outgoing messages in this chat.
+
+A chat is considered "scraped" when at least one toggle is enabled. The dropdown summarizes the row's state at a glance: **None** when nothing is on, **All** when every applicable toggle is on, otherwise the list of enabled toggles (rolled up to **Admins** / **Users** when both sub-options under a section are on, otherwise spelled out, e.g. **Admin Humans**).
+
+> **Tip**: For most crypto alpha channels, toggle **Admins**. For groups where you only care about admin calls, enable **Admins → Humans** only.
 
 ### Toolbar Actions
 
@@ -223,11 +234,11 @@ A channel is considered "scraped" when at least one checkbox is enabled.
 
 ## Activity Page
 
-The Activity page shows a real-time log of scraping activity and address detection. Scraping runs independently in the background regardless of which page you're on — this page simply gives you visibility into what's happening.
+The Activity page shows a real-time log of scraping activity and address detection. Scraping runs independently in the background regardless of which page you're on. This page gives you visibility into what's happening.
 
 ### Starting & Stopping
 
-- Scraping is **on by default** — it starts automatically when you're logged in and have scraped channels, regardless of which page you're on
+- Scraping is **on by default**. It starts automatically when you're logged in and have scraped channels, regardless of which page you're on
 - Use the **Start Scraping** / **Stop Scraping** button to control scraping manually
 - Stopping scraping requires confirmation to prevent accidental stops
 - The status indicator in the top-right shows the current state:
@@ -414,7 +425,7 @@ If you're running into issues, start here. Check the Activity page log for error
 
 - Click the **Refresh** button on the Channels page
 - Make sure you're connected to Telegram (check the connection status)
-- If you just joined new channels, it may take a moment for them to appear
+- If you recently joined new channels, it may take a moment for them to appear
 
 ### An older channel is missing from the list
 
@@ -423,8 +434,8 @@ If you're running into issues, start here. Check the Activity page log for error
 
 ### Addresses not being detected
 
-- Verify that the channel is being scraped (at least one checkbox enabled on the Channels page)
-- Check that the correct filter is enabled (e.g., if the address comes from an admin, make sure "Admins" is checked)
+- Verify that the channel is being scraped (its **Tracking** dropdown on the Channels page should not show **None**)
+- Check that the correct filter is enabled in the row's **Tracking** dropdown (e.g., if the address comes from a human admin, make sure **Admins → Humans** is on; if from an admin bot, make sure **Admins → Bots** is on)
 - The address format must match one of the supported patterns (see [Supported Blockchains](#supported-blockchains))
 - Check the Activity page log for any error messages
 
@@ -467,7 +478,7 @@ If you see this warning when enabling "Remember credentials":
 - Go to **System Settings → Privacy & Security** and allow Keychain access for Maestro Scraper
 - Restart the app and try again
 
-Without Keychain access, your credentials and session cannot be saved — you will need to log in again each time you restart the app.
+Without Keychain access, your credentials and session cannot be saved, so you will need to log in again each time you restart the app.
 
 ---
 
@@ -495,7 +506,7 @@ A: Maestro ([`@maestro`](https://t.me/maestro)) is the standard trading bot. Mae
 A: When an address is detected, the app stores a record of `address + chatId`. If the same address appears again in the same chat, it's skipped. Addresses from different chats are treated as separate. You can clear the history in Settings to reset this.
 
 **Q: Are my messages or private chats read?**<br />
-A: The app only processes messages from chats you explicitly choose to scrape on the Channels page. It does not read any chats you haven't selected. Note that you can scrape private chats (user and bot conversations) if you enable the "Users" toggle on them.
+A: The app only processes messages from chats you explicitly choose to scrape on the Channels page. It does not read any chats you haven't selected. You can scrape private chats (user and bot conversations) by turning on their single **Track** toggle in the **Tracking** dropdown. Your own Saved Messages chat has its own **Track** toggle too.
 
 **Q: Where is my data stored?**<br />
 A: All data is stored locally on your computer. Your Telegram session is encrypted via the OS keychain. No data is sent to external servers besides Telegram's own API and the Maestro bot.
