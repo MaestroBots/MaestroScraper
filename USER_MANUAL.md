@@ -1,6 +1,6 @@
 # Maestro Scraper User Manual
 
-**Version 1.3.0**
+**Version 1.4.0**
 
 ---
 
@@ -42,7 +42,6 @@ Maestro Scraper is a cross-platform desktop application that scrapes your Telegr
 - **Bot Forwarding** - Forwards detected addresses to Maestro ([`@maestro`](https://t.me/maestro)) or Maestro Pro ([`@maestropro`](https://t.me/maestropro))
 - **Encrypted Storage** - Your Telegram session is encrypted using your operating system's keychain
 - **Persistent Stats** - Scraping statistics and activity logs survive app restarts
-- **Forward to Maestro** - Experimental feature to manually resend any detected address to the bot
 
 ---
 
@@ -64,15 +63,15 @@ Follow these steps to download and install Maestro Scraper on your platform.
 
 ### Download
 
-Download the latest release ([v1.3.0](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.3.0)) for your platform:
+Download the latest release ([v1.4.0](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.4.0)) for your platform:
 
 | Platform                  | File                                                                                                                                |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Windows**               | [`maestro-scraper-1.3.0-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-x64.exe)     |
-| **macOS (Intel)**         | [`maestro-scraper-1.3.0-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-x64.dmg)     |
-| **macOS (Apple Silicon)** | [`maestro-scraper-1.3.0-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-arm64.dmg) |
-| **Linux (x64)**           | [`maestro-scraper-1.3.0-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-amd64.deb) |
-| **Linux (arm64)**         | [`maestro-scraper-1.3.0-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.3.0/maestro-scraper-1.3.0-arm64.deb) |
+| **Windows**               | [`maestro-scraper-1.4.0-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.4.0/maestro-scraper-1.4.0-x64.exe)     |
+| **macOS (Intel)**         | [`maestro-scraper-1.4.0-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.4.0/maestro-scraper-1.4.0-x64.dmg)     |
+| **macOS (Apple Silicon)** | [`maestro-scraper-1.4.0-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.4.0/maestro-scraper-1.4.0-arm64.dmg) |
+| **Linux (x64)**           | [`maestro-scraper-1.4.0-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.4.0/maestro-scraper-1.4.0-amd64.deb) |
+| **Linux (arm64)**         | [`maestro-scraper-1.4.0-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.4.0/maestro-scraper-1.4.0-arm64.deb) |
 
 ### Install
 
@@ -148,19 +147,22 @@ When you first open Maestro Scraper, you'll be taken to the login screen. The lo
 
 > If you uncheck "Remember credentials" later, the app will clear all saved credentials and your Telegram session. You will need to log in again.
 
+> If your system does not have a usable keychain (common on some Linux installs, or on macOS when Keychain access has been denied), the app will ask whether you want to save your credentials using a machine-tied fallback instead. See [When a secure keychain is unavailable](#when-a-secure-keychain-is-unavailable) for the trade-offs and how to choose.
+
 ### Step 2: Phone Number
 
 - Enter your phone number **with country code** (e.g., `+1 234 567 8900` for US)
 - Click **Send Code**
-- A verification code will be sent to your Telegram app
+- Telegram chooses how to send the code. If you're already signed in to Telegram somewhere, it usually goes to that Telegram app rather than as a text message.
 
 ### Step 3: Verification Code
 
-- Open your Telegram app on your phone or desktop
-- Find the login code message from Telegram
-- Enter the **5-6 digit code** in Maestro Scraper
+- The screen tells you where the code was sent (your **Telegram app**, a **text message**, or a **call**). Look there.
+- If it went to your Telegram app, open Telegram on your phone or desktop and find the login code message from the **Telegram** chat.
+- Enter the **5-6 digit code** in Maestro Scraper. Rarely, Telegram sends the code as a **word or short phrase** by SMS instead of digits; the screen will say so, and you type it in exactly as received.
 - Click **Verify**
-- If you didn't receive the code, click **Resend code**
+- If you didn't receive it, click **Resend** to try another delivery method (the button shows which one, for example **Resend via SMS**). The option only appears when another method is available, and it may show a short countdown first because Telegram enforces a wait between sends.
+- If the screen says no code can be sent to this app, follow the instructions in the message: sign in once on the official Telegram app on your phone (and, if Telegram asks for a login email, set it up there), then come back and try again.
 
 ### Step 4: Two-Factor Authentication (if enabled)
 
@@ -189,13 +191,13 @@ The page displays a table of all your Telegram chats with the following columns:
 | **Username** | The `@username` if available                        |
 | **Type**     | One of: `channel`, `group`, `user`, `bot`, `self`   |
 | **ID**       | The unique Telegram ID for this chat                |
-| **Tracking** | Dropdown that controls what is being scraped from this chat. The toggles inside depend on the chat type (see below). |
+| **Settings** | Dropdown that controls what is being scraped from this chat and its auto-buy amounts. The toggles inside depend on the chat type (see below). |
 
 > **Chat list limit**: The Channels page lists up to your **5,000 most recently active chats**. If you're in more chats than that, an amber banner appears at the top of the page noting that older chats were not listed. To bring an older chat into range, open it in Telegram (sending or reading a message refreshes its activity timestamp) and then click **Refresh**.
 
 ### Selecting What to Scrape
 
-Click the **Tracking** dropdown on any row to open its menu. The toggles inside the dropdown depend on the chat type:
+Click the **Settings** dropdown on any row to open its menu. The toggles inside the dropdown depend on the chat type:
 
 - **Group**: full control. Tracking is split across four sender categories under **Admins → Humans / Bots** and **Users → Humans / Bots**, plus standalone **Pinned** and **Self** toggles.
 - **Channel**: broadcast channels only accept posts from admins, so we expose only **Admins** (forward all addresses found in the channel) and **Pinned** (newly pinned messages).
@@ -211,9 +213,20 @@ What each group toggle means:
 - **Pinned** - Newly pinned messages.
 - **Self** - Your own outgoing messages in this chat.
 
-A chat is considered "scraped" when at least one toggle is enabled. The dropdown summarizes the row's state at a glance: **None** when nothing is on, **All** when every applicable toggle is on, otherwise the list of enabled toggles (rolled up to **Admins** / **Users** when both sub-options under a section are on, otherwise spelled out, e.g. **Admin Humans**).
+A chat is considered "scraped" when at least one toggle is enabled. The dropdown summarizes the row's tracking state at a glance, prefixed with **Tracking:** - **Tracking: None** when nothing is on, **Tracking: All** when every applicable toggle is on, otherwise the list of enabled toggles (rolled up to **Admins** / **Users** when both sub-options under a section are on, otherwise spelled out, e.g. **Admin Humans**).
 
 > **Tip**: For most crypto alpha channels, toggle **Admins**. For groups where you only care about admin calls, enable **Admins → Humans** only.
+
+### Buy Amounts
+
+The **Settings** dropdown has two tabs: **Tracking** (the toggles above) and **Buy Amount**. The **Buy Amount** tab lets you set how much Maestro should auto-buy when it gets an address from this channel, with a separate amount per chain. You can set up to **three** chains, chosen from **SOL**, **BSC**, **BASE**, **ETH**, **ROBINHOOD**, **MONAD**, **SONIC**, **AVAX**, **ARB**, **HYPE**, **TRX**, and **TON**.
+
+- To add a chain, pick it from the dropdown, type an amount, and click **Add**. The native unit for that chain is shown next to the amount (for example BNB on BSC, ETH on Base and Arbitrum, MON on Monad).
+- **Add** stays disabled until you enter a valid amount, and the box shows the allowed range if the amount is too small or too large.
+- Each added chain shows as its own row. Edit its amount inline, or click **Remove** to turn auto-buy off for that chain.
+- Once you have three chains set, the add row is hidden. Remove one to free up a slot.
+
+When the app forwards an address, it sends your amounts to the bot. The bot works out which chain the token is on and uses the amount you set for that chain. These amounts override the auto-buy amount set in your bot for the scraper channel. If you did not set an amount for a chain, the bot keeps doing whatever it did before.
 
 ### Toolbar Actions
 
@@ -266,7 +279,8 @@ Below the statistics, the activity log shows a real-time feed of all scraping ev
 | ---------- | ------------- | --------------------------------------------------------- |
 | **Green**  | Address Found | A new crypto address was detected                         |
 | **Yellow** | Duplicate     | An address was skipped because it was already seen        |
-| **Blue**   | Forwarded     | An address was successfully sent to the Maestro bot       |
+| **Blue**   | Forwarded     | An address was successfully sent to the Maestro bot. If you set auto-buy amounts for the chat, the entry also lists the per-chain amounts that were sent. |
+| **Orange** | Unverified    | An address was found but the sender's source couldn't be verified, so it was not forwarded |
 | **Red**    | Error         | Something went wrong (e.g., failed to forward)            |
 | **Gray**   | Message       | An informational message (e.g., scraping started/stopped) |
 
@@ -282,7 +296,6 @@ Each log entry shows:
 - **Search** - Filter log entries by message content, channel name, or address
 - **Copy** - Click the copy icon on any log entry to copy the full entry text
 - **Copy Address** - Click on any displayed address to copy it to your clipboard
-- **Forward to Maestro** - When enabled in Settings, a "Forward to Maestro" button appears on entries with detected addresses, allowing you to manually resend them
 - **Clear Log** - Remove all log entries and reset statistics
 - **Infinite Scroll** - Scroll down to load more entries (50 loaded at a time)
 
@@ -292,10 +305,12 @@ When a new message arrives in a scraped channel:
 
 1. The app checks if the chat is in your scraped list
 2. It checks if the message type matches your filters (admin, user, bot, or pinned)
-3. The message text and any embedded links are scanned for crypto addresses
+3. The message text, any embedded links, and the links and labels on inline buttons are scanned for crypto addresses
 4. If duplicate detection is enabled, previously seen addresses are skipped
 5. New addresses are formatted and forwarded to the Maestro bot with encrypted metadata
 6. All events are logged in the activity log
+
+> **Note**: Telegram doesn't always reveal whether a sender is a bot or a human, or an admin or a regular member. When that can't be determined and your tracking toggles would treat the two cases differently (for example, **Users → Humans** on but **Users → Bots** off), the app won't guess. Any address in that message is logged as **Unverified** (orange) so you can review it, but it is not forwarded. When both relevant toggles are on (or both off), the unknown doesn't change the outcome and scraping proceeds normally. Channels and direct messages are never affected.
 
 > **Note on edits**: Messages that are edited more than 30 seconds after the original post are ignored to prevent spam from old edits.
 
@@ -322,10 +337,6 @@ Toggle between the standard Maestro bot and Maestro Pro:
 - **Maestro Pro** ([`@maestropro`](https://t.me/maestropro)) - The premium trading bot
 
 The currently active bot is shown with a green "Active" badge.
-
-#### Forward to Maestro (Experimental)
-
-When enabled, a "Forward to Maestro" button appears on activity log entries that contain detected addresses. This allows you to manually resend any address to the Maestro bot at any time.
 
 ### Data Management
 
@@ -369,7 +380,7 @@ Maestro Scraper detects addresses for the following blockchains:
 | **TON**          | Starts with `EQ` or `UQ` followed by 46 characters | `EQAbCdEf123...`  |
 | **TRON**         | Starts with `T` followed by 33 characters          | `TAbCdEf12345...` |
 
-The app scans both the message text and any embedded URLs/links for these address patterns.
+The app scans the message text, any embedded links, and the links and labels on inline buttons for these address patterns. Trading channels often hide the contract behind a **Buy** or **Chart** button, or put the address straight in the button text, so those are caught too.
 
 ---
 
@@ -386,6 +397,8 @@ Your Telegram session is encrypted using your operating system's native keychain
 - **Linux**: libsecret or kwallet
 
 This means your Telegram session is protected by your OS login credentials. Other app data (channel preferences, address history, activity logs) is stored locally but not encrypted.
+
+On systems without a usable keychain - for example minimal Linux installs without libsecret or kwallet, or macOS when Keychain access has been denied for Maestro Scraper - the app can save your credentials using a machine-tied fallback encryption instead. The fallback is **opt-in** - the app asks for your explicit consent the first time you enable **Remember credentials** on such a system, and is less secure than the OS keychain. See [When a secure keychain is unavailable](#when-a-secure-keychain-is-unavailable) for the full trade-off and how to switch back once a keychain is available.
 
 ### What Data Is Stored
 
@@ -434,8 +447,8 @@ If you're running into issues, start here. Check the Activity page log for error
 
 ### Addresses not being detected
 
-- Verify that the channel is being scraped (its **Tracking** dropdown on the Channels page should not show **None**)
-- Check that the correct filter is enabled in the row's **Tracking** dropdown (e.g., if the address comes from a human admin, make sure **Admins → Humans** is on; if from an admin bot, make sure **Admins → Bots** is on)
+- Verify that the channel is being scraped (its **Settings** dropdown on the Channels page should not show **Tracking: None**)
+- Check that the correct filter is enabled in the row's **Settings** dropdown (e.g., if the address comes from a human admin, make sure **Admins → Humans** is on; if from an admin bot, make sure **Admins → Bots** is on)
 - The address format must match one of the supported patterns (see [Supported Blockchains](#supported-blockchains))
 - Check the Activity page log for any error messages
 
@@ -466,19 +479,25 @@ If you're running into issues, start here. Check the Activity page log for error
 | "Invalid phone number format"    | Include your country code (e.g., +1 for US, +44 for UK)         |
 | "Invalid verification code"      | Double-check the code from your Telegram app                    |
 | "Verification code expired"      | Click "Resend code" to get a new one                            |
+| No code arrives                  | Check the Telegram app on your other devices (it often goes there, not as a text), then use Resend. If it says no code can be sent here, sign in on the official Telegram app first, then retry |
+| "Telegram is asking for an extra verification step..." | Telegram wants a check only its official apps can complete. Sign in once with the official Telegram app, then try again here |
+| "You are signed in, but your account details could not be loaded" | The login itself worked. Restart the app and it will open already signed in |
 | "Incorrect password"             | This is your Telegram 2FA cloud password, not your app password |
 | "Too many attempts"              | Wait a few minutes before trying again                          |
 | "This phone number is banned"    | Contact Telegram support                                        |
 
-### "Keychain access is unavailable" warning (macOS)
+### When a secure keychain is unavailable
 
-If you see this warning when enabling "Remember credentials":
+Some systems do not have a usable keychain service. This includes minimal Linux installs (such as Raspberry Pi OS) and macOS when Keychain access has been denied for Maestro Scraper. In that case, the login page opens with a short dialog explaining your options.
 
-- You previously denied Keychain access when macOS prompted you
-- Go to **System Settings → Privacy & Security** and allow Keychain access for Maestro Scraper
-- Restart the app and try again
+You have two choices:
 
-Without Keychain access, your credentials and session cannot be saved, so you will need to log in again each time you restart the app.
+- **Accept & enable** - the app saves your credentials using a machine-tied fallback encryption. It is less secure than a system keychain. Pick this if you control the machine (your own Raspberry Pi, your own laptop) and want **Remember credentials** to work.
+- **No thanks** - the app still works normally, but credentials and your Telegram session are not saved between sessions. You will need to enter them again each time you restart the app.
+
+> The fallback consent is asked **every launch** - Maestro Scraper doesn't remember the choice for you. Accepting re-enables the fallback for the current session, which is enough to read any credentials you saved in a previous run (the key is tied to this machine). If you'd rather not see the dialog, restore your keychain access on macOS or install the libsecret / kwallet backend on Linux.
+
+> On macOS you can always restore Keychain access later - go to **System Settings → Privacy & Security** and allow Keychain access for Maestro Scraper, then restart the app. If you previously used the fallback, a small green notice will appear next to **Remember credentials** on the login page letting you know the keychain is now available. To upgrade your saved credentials to the stronger keychain encryption, log out and log back in with **Remember credentials** enabled - the app will re-save them using the keychain automatically. Until you do, your existing fallback-encrypted credentials continue to work.
 
 ---
 
@@ -506,11 +525,11 @@ A: Maestro ([`@maestro`](https://t.me/maestro)) is the standard trading bot. Mae
 A: When an address is detected, the app stores a record of `address + chatId`. If the same address appears again in the same chat, it's skipped. Addresses from different chats are treated as separate. You can clear the history in Settings to reset this.
 
 **Q: Are my messages or private chats read?**<br />
-A: The app only processes messages from chats you explicitly choose to scrape on the Channels page. It does not read any chats you haven't selected. You can scrape private chats (user and bot conversations) by turning on their single **Track** toggle in the **Tracking** dropdown. Your own Saved Messages chat has its own **Track** toggle too.
+A: The app only processes messages from chats you explicitly choose to scrape on the Channels page. It does not read any chats you haven't selected. You can scrape private chats (user and bot conversations) by turning on their single **Track** toggle in the **Settings** dropdown. Your own Saved Messages chat has its own **Track** toggle too.
 
 **Q: Where is my data stored?**<br />
 A: All data is stored locally on your computer. Your Telegram session is encrypted via the OS keychain. No data is sent to external servers besides Telegram's own API and the Maestro bot.
 
 ---
 
-_Maestro Scraper v1.3.0_
+_Maestro Scraper v1.4.0_

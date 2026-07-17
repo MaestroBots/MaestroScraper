@@ -1,8 +1,16 @@
 # Changelog
 
+## v1.4.0
+
+- New **Buy Amount** tab on each channel's **Tracking** menu. Add a buy amount per chain (up to 3 chains, from **SOL**, **BSC**, **BASE**, **ETH**, **ROBINHOOD**, **MONAD**, **SONIC**, **AVAX**, **ARB**, **HYPE**, **TRX**, **TON**) and remove any you no longer want. When an address is detected in that channel, your amounts are sent with it and the bot uses the one for the token's chain, overriding the Auto Buy amount set in your Scraper channel.
+- Address detection now also reads the links and labels on inline buttons, so contracts hidden behind a **Buy** or **Chart** button (or dropped straight into the button text) are picked up too.
+- On systems without a secure keychain (some Linux setups, or macOS when Keychain access is denied), you can now choose to save your credentials with a machine-tied fallback. The login page asks first and explains the trade-off, and shows a notice when your keychain becomes available again so you can switch back.
+- Signing in is clearer when the code doesn't arrive as a text. The screen now tells you where Telegram actually sent it (your **Telegram app**, a **text message**, or a **call**), accepts codes that come as a word or phrase, and the **Resend** button shows which method it'll try next (with a short wait if Telegram requires one). If no code can be sent to this app, or Telegram needs a step only its official app can complete, you get clear instructions instead of waiting on a code that never comes.
+- New **Unverified** (orange) entry in the activity log. Sometimes Telegram won't reveal whether a message's sender is a bot or a person, or an admin or a regular member. If your **Tracking** settings would handle those two cases differently, the app no longer guesses: it logs the address as **Unverified** so you can review it, but doesn't forward it. When your settings would treat both cases the same, scraping continues as normal. Your channels and direct messages aren't affected.
+
 ## v1.3.0
 
-- New **Tracking** menu on each channel: pick exactly whose messages to scrape — **Admins** or **Users**, and **Humans** or **Bots** — plus **Pinned** posts and your **own** messages, each toggled independently. This replaces the old single bots switch.
+- New **Tracking** menu on each channel: pick exactly whose messages to scrape: **Admins** or **Users**, and **Humans** or **Bots**, plus **Pinned** posts and your **own** messages, each toggled independently. This replaces the old single bots switch.
 - Fixed a slowdown where the app could lag or freeze during heavy scraping as the activity log and address history grew. Saving now happens in the background, so monitoring stays smooth.
 - Clearer login errors: the app now shows the specific reason (and its own prompts, like "Please enter the verification code") instead of a generic "something went wrong."
 - Your saved session and credentials are better protected if the stored file is corrupted or a save is interrupted, and logging out now reliably clears your session.
@@ -16,7 +24,7 @@
 ## v1.2.0
 
 - The Channels page now lists up to your **5,000 most recently active chats** (up from 500), so users in many channels can finally see and scrape the long tail of their chat list.
-- Channels now load progressively as they're fetched — the table fills in batches instead of waiting for everything to finish, making the page feel much faster on large accounts.
+- Channels now load progressively as they're fetched, the table fills in batches instead of waiting for everything to finish, making the page feel much faster on large accounts.
 - If you're in more chats than the limit, a warning banner appears at the top of the Channels page letting you know older chats were omitted, with instructions on how to surface them.
 - Fixed a bug where posts from anonymous admins (signed as the channel itself) were not always recognized as admin posts. With the **Admins** filter enabled, these posts are now scraped correctly in broadcast channels and supergroups.
 - Improved address detection from links: addresses inside dexscreener and pump.fun URLs are now picked up correctly, instead of being missed or captured as a wrong, partial address.
@@ -28,7 +36,7 @@
 ## v1.1.0
 
 - Channels table now defaults to Telegram order (pinned first, then by most recent activity).
-- Cleaned up the interface — renamed the "Monitor" page to "Activity" and made labels consistent throughout the app.
+- Cleaned up the interface: renamed the "Monitor" page to "Activity" and made labels consistent throughout the app.
 - Scraping status is now visible in the navbar on all pages.
 - New app icon that fits properly in the macOS dock.
 - Various bug fixes and stability improvements.
@@ -56,8 +64,8 @@ v1.0.0 is a major release and a complete evolution from the original TelegramScr
 - Multi-chain address detection: **EVM**, **Solana**, **TON**, and **TRON** addresses in both message text and embedded links.
 - Detected addresses are automatically forwarded to your Maestro trading bot (**@maestro** or **@maestropro**).
 - Forwarded messages include the source channel and a direct link back to the original message.
-- **Ignore Duplicates** — automatically skip addresses that have already been detected in the same chat.
-- **Log Retention Period** — choose how long activity logs are kept (7, 14, 21, or 30 days) to manage storage.
+- **Ignore Duplicates**: automatically skip addresses that have already been detected in the same chat.
+- **Log Retention Period**: choose how long activity logs are kept (7, 14, 21, or 30 days) to manage storage.
 - All stored data (credentials, session, settings) is encrypted using your operating system's secure keychain.
 - Native macOS builds (Apple Silicon and Intel) and Windows support.
 - Terms of Service agreement on first launch.
