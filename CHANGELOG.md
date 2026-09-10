@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.5.0
+
+- Fixed a bug where the app usually couldn't tell whether a message came from a person or a bot. If your **Tracking** settings split **Humans** and **Bots**, most messages were being logged as **Unverified** and held back instead of forwarded. Detection now works for every sender, and a brief Telegram server hiccup no longer freezes a sender as unknown for the rest of the day.
+- **Refresh** on the Channels page no longer erases your per-channel **Buy Amount** settings. They stay put, the same way your tracking selections already did.
+- Uniswap v4 pool links that show a shortened copy of the pool ID as link text no longer cause the cut-off copy to be forwarded alongside the real one.
+- Logging in is more forgiving of pasted input. An API hash copied with a stray space or line break now works, and if your credentials are wrong you see the specific problem instead of a generic "Failed to connect to Telegram."
+- Phone numbers are checked before contacting Telegram: spaces, dashes, and parentheses are ignored, and a number typed in national format (starting with 0) gets a message asking for the country code instead of failing later.
+- Reopening the app after your Telegram session expired or was signed out elsewhere now takes you straight back to the phone step without a hidden error.
+- Updated to the latest Telegram API version so messages from channels using newer Telegram features are read correctly.
+- On the release download page, each installer file name is now a direct download link.
+
 ## v1.4.0
 
 - New **Buy Amount** tab on each channel's **Tracking** menu. Add a buy amount per chain (up to 3 chains, from **SOL**, **BSC**, **BASE**, **ETH**, **ROBINHOOD**, **MONAD**, **SONIC**, **AVAX**, **ARB**, **HYPE**, **TRX**, **TON**) and remove any you no longer want. When an address is detected in that channel, your amounts are sent with it and the bot uses the one for the token's chain, overriding the Auto Buy amount set in your Scraper channel.
