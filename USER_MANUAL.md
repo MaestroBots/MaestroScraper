@@ -1,6 +1,6 @@
 # Maestro Scraper User Manual
 
-**Version 1.5.1**
+**Version 1.6.0**
 
 ---
 
@@ -63,15 +63,15 @@ Follow these steps to download and install Maestro Scraper on your platform.
 
 ### Download
 
-Download the latest release ([v1.5.1](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.5.1)) for your platform:
+Download the latest release ([v1.6.0](https://github.com/MaestroBots/MaestroScraper/releases/tag/v1.6.0)) for your platform:
 
 | Platform                  | File                                                                                                                                |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Windows**               | [`maestro-scraper-1.5.1-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.5.1/maestro-scraper-1.5.1-x64.exe)     |
-| **macOS (Intel)**         | [`maestro-scraper-1.5.1-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.5.1/maestro-scraper-1.5.1-x64.dmg)     |
-| **macOS (Apple Silicon)** | [`maestro-scraper-1.5.1-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.5.1/maestro-scraper-1.5.1-arm64.dmg) |
-| **Linux (x64)**           | [`maestro-scraper-1.5.1-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.5.1/maestro-scraper-1.5.1-amd64.deb) |
-| **Linux (arm64)**         | [`maestro-scraper-1.5.1-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.5.1/maestro-scraper-1.5.1-arm64.deb) |
+| **Windows**               | [`maestro-scraper-1.6.0-x64.exe`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.6.0/maestro-scraper-1.6.0-x64.exe)     |
+| **macOS (Intel)**         | [`maestro-scraper-1.6.0-x64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.6.0/maestro-scraper-1.6.0-x64.dmg)     |
+| **macOS (Apple Silicon)** | [`maestro-scraper-1.6.0-arm64.dmg`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.6.0/maestro-scraper-1.6.0-arm64.dmg) |
+| **Linux (x64)**           | [`maestro-scraper-1.6.0-amd64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.6.0/maestro-scraper-1.6.0-amd64.deb) |
+| **Linux (arm64)**         | [`maestro-scraper-1.6.0-arm64.deb`](https://github.com/MaestroBots/MaestroScraper/releases/download/v1.6.0/maestro-scraper-1.6.0-arm64.deb) |
 
 ### Install
 
@@ -219,12 +219,18 @@ A chat is considered "scraped" when at least one toggle is enabled. The dropdown
 
 ### Buy Amounts
 
-The **Settings** dropdown has two tabs: **Tracking** (the toggles above) and **Buy Amount**. The **Buy Amount** tab lets you set how much Maestro should auto-buy when it gets an address from this channel, with a separate amount per chain. You can set up to **three** chains, chosen from **SOL**, **BSC**, **BASE**, **ETH**, **ROBINHOOD**, **MONAD**, **SONIC**, **AVAX**, **ARB**, **HYPE**, **TRX**, and **TON**.
+The **Settings** dropdown has two tabs: **Tracking** (the toggles above) and **Buy Amount**. The **Buy Amount** tab lets you set how much Maestro should auto-buy when it gets an address from this channel, with a separate amount per chain. You can set up to **three** chains from the current chain list.
 
 - To add a chain, pick it from the dropdown, type an amount, and click **Add**. The native unit for that chain is shown next to the amount (for example BNB on BSC, ETH on Base and Arbitrum, MON on Monad).
 - **Add** stays disabled until you enter a valid amount, and the box shows the allowed range if the amount is too small or too large.
 - Each added chain shows as its own row. Edit its amount inline, or click **Remove** to turn auto-buy off for that chain.
 - Once you have three chains set, the add row is hidden. Remove one to free up a slot.
+
+The chain list updates when you open the app and every **24 hours** while it is running. If an update is unavailable, the app keeps the last successfully downloaded list. On a first launch without a download, it uses the list included with the app.
+
+Your saved amounts stay in place when the list updates. If a saved chain becomes unavailable or its amount falls outside the new allowed range, the app shows a warning and stops forwarding addresses from that chat. Edit the amount or click **Remove** for the unavailable chain to resume forwarding. These errors also appear on the **Activity** page.
+
+Address counters and detection logs continue updating while an invalid buy amount blocks forwarding. Blocked addresses are not added to duplicate history, so a later sighting can forward after you correct the setting. Correcting the setting does not resend earlier messages automatically.
 
 When the app forwards an address, it sends your amounts to the bot. The bot works out which chain the token is on and uses the amount you set for that chain. These amounts override the auto-buy amount set in your bot for the scraper channel. If you did not set an amount for a chain, the bot keeps doing whatever it did before.
 
@@ -415,6 +421,8 @@ On systems without a usable keychain - for example minimal Linux installs withou
 - Message content is not persisted (only processed in memory)
 - No data is sent to external servers except the Maestro bot, Telegram's own API, and Sentry for error tracking
 
+The app also downloads the supported chain list from Maestro's website on startup and daily. No account or trading data is included in this request.
+
 ### Bot Communication
 
 When forwarding addresses to Maestro, the app sends a formatted message containing:
@@ -530,6 +538,8 @@ A: The app only processes messages from chats you explicitly choose to scrape on
 **Q: Where is my data stored?**<br />
 A: All data is stored locally on your computer. Your Telegram session is encrypted via the OS keychain. No data is sent to external servers besides Telegram's own API and the Maestro bot.
 
+The app also downloads the supported chain list from Maestro's website on startup and daily. No account or trading data is included in this request.
+
 ---
 
-_Maestro Scraper v1.5.1_
+_Maestro Scraper v1.6.0_
